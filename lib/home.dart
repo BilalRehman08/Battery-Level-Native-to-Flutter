@@ -10,6 +10,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static const platform = MethodChannel('samples.flutter.dev/battery');
+  // Get battery level.
   @override
   Widget build(BuildContext context) {
     return Container();
