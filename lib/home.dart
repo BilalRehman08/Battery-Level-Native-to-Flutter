@@ -31,6 +31,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Material(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              child: const Text('Get Battery Level'),
+              onPressed: _getBatteryLevel,
+            ),
+            Text(_batteryLevel),
+          ],
+        ),
+      ),
+    );
   }
 }
