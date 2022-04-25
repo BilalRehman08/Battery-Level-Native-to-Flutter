@@ -19,10 +19,20 @@ public class MainActivity extends FlutterActivity {
   super.configureFlutterEngine(flutterEngine);
     new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
         .setMethodCallHandler(
-          (call, result) -> {
-            // Note: this method is invoked on the main thread.
-            // TODO
-          }
+            (call, result) -> {
+                // Note: this method is invoked on the main thread.
+                if (call.method.equals("getBatteryLevel")) {
+                  int batteryLevel = getBatteryLevel();
+    
+                  if (batteryLevel != -1) {
+                    result.success(batteryLevel);
+                  } else {
+                    result.error("UNAVAILABLE", "Battery level not available.", null);
+                  }
+                } else {
+                  result.notImplemented();
+                }
+              }    
         );
   }
 
